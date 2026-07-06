@@ -1,0 +1,76 @@
+# ============================================================
+# Git configuration
+# Docs: https://git-scm.com/docs/git-config
+# ============================================================
+
+# ── Identity ────────────────────────────────────────────────
+[user]
+	name = Jose Maria
+	email = josemagomez.devs@gmail.com
+	username = josego16
+	# SSH key used for commit signing (see [gpg] format = ssh below)
+	signingKey = ~/.ssh/id_ed25519.pub
+
+# ── Core ────────────────────────────────────────────────────
+[core]
+	# Editor invoked by git for commit messages, rebase TODO, etc.
+	# Policy: zed for code/commits, nano for terminal quick-edits.
+	editor = zed
+
+# ── Commit signing ──────────────────────────────────────────
+# Use SSH keys (not GPG) to sign commits. Requires ssh-agent with
+# the key loaded. signingKey above must point to the .pub file.
+[gpg]
+	format = ssh
+
+# ── Pull / Fetch ────────────────────────────────────────────
+[pull]
+	# Rebase local commits on top of pulled commits instead of
+	# creating a merge commit. Keeps history linear.
+	rebase = true
+[fetch]
+	# Prune deleted remote branches on every fetch.
+	prune = true
+
+# ── Rebase ──────────────────────────────────────────────────
+[rebase]
+	# Stash dirty working tree before rebasing, restore after.
+	autoStash = true
+	# Move fixup!/squash! commits to their target automatically
+	# when rebasing (git rebase --interactive --autosquash).
+	autosquash = true
+	# Update branch refs pointing to rebased commits so stacked
+	# branches stay connected (git rebase --update-refs).
+	updateRefs = true
+
+# ── Push ────────────────────────────────────────────────────
+[push]
+	# Allow --force-with-lease to push only if the remote tip
+	# matches our expectation (safer than blind --force).
+	useForceIfIncludes = true
+	# Automatically set up tracking on first push to a new branch.
+	autoSetupRemote = true
+
+# ── Commit ──────────────────────────────────────────────────
+[commit]
+	# Show the full diff being committed in the editor template.
+	verbose = true
+
+# ── Rerere (reuse recorded resolution) ──────────────────────
+# Remember how merge conflicts were resolved and reapply the same
+# resolution automatically if the same conflict recurs.
+[rerere]
+	enabled = true
+
+# ── Per-branch overrides ────────────────────────────────────
+[branch "main"]
+	rebase = true
+
+# ── Diff ────────────────────────────────────────────────────
+# histogram algorithm: better at detecting moves/renames than
+# the default myers algorithm, at a small performance cost.
+[diff]
+	algorithm = histogram
+
+[init]
+	defaultBranch = main

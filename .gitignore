@@ -1,0 +1,17 @@
+# Editor and OS junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Backups
+*.bak
+
+# Temporary files
+/tmp/
+*.tmp
+
+# Local overrides (not tracked)
+.local/
+/.atl
