@@ -12,6 +12,12 @@
   // AGENT & AI
   // ─────────────────────────────────────────────────────────────
 
+  "proxy": "",
+  "edit_predictions": {
+    "ollama": {
+      "model": "qwen2.5-coder:7b-base"
+    }
+  },
   "language_models": {
     "opencode": {
       "show_zen_models": false,
@@ -30,8 +36,11 @@
   },
 
   "agent": {
+    "default_profile": "write",
+    "show_turn_stats": true,
+    "terminal_init_command": "opencode",
     "default_model": {
-      "effort": "medium",
+      "effort": "high",
       "provider": "opencode",
       "model": "go/deepseek-v4-flash",
       "enable_thinking": true,
