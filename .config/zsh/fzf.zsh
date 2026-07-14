@@ -1,8 +1,14 @@
-# fzf config (standard bindings loaded in .zshrc)
+# =========================================================
+# Defaults
+# =========================================================
 
 # fd as the default fzf backend
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --strip-cwd-prefix'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# =========================================================
+# Theme
+# =========================================================
 
 # kanagawa_wave theme (matches alacritty/zellij/lazygit)
 export FZF_DEFAULT_OPTS='
@@ -14,11 +20,18 @@ export FZF_DEFAULT_OPTS='
 --color=gutter:#2A2A37
 '
 
+# =========================================================
 # Previews
+# =========================================================
+
 export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
 export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -50'"
+
+# =========================================================
+# Completion previews
+# =========================================================
 
 # Contextual previews for **<TAB> completion
 _fzf_comprun() {
@@ -31,11 +44,21 @@ _fzf_comprun() {
   esac
 }
 
+# =========================================================
+# Widgets
+# =========================================================
+
 # Ctrl+F: files excluding hidden files
 _fzf_file_no_hidden() {
   local cmd result
+  local -a fzf_cmd
   cmd="${FZF_DEFAULT_COMMAND/--hidden /}"
-  result=$(eval "${cmd:-find . -type f}" | fzf --preview "$_FZF_PREVIEW_CMD") \
+  if [[ -n "$cmd" ]]; then
+    fzf_cmd=(${(z)cmd})
+  else
+    fzf_cmd=(find . -type f)
+  fi
+  result=$($fzf_cmd | fzf --preview "$_FZF_PREVIEW_CMD") \
     && LBUFFER+="$result"
   zle reset-prompt
 }

@@ -1,7 +1,14 @@
-# fzf widgets (depends on fzf.zsh)
+# =========================================================
+# fzf widgets
+# =========================================================
+
 bindkey '^F' _fzf_file_no_hidden
 
-# Git modified files
+# =========================================================
+# Git
+# =========================================================
+
+# Ctrl+N: select modified file, add to buffer
 _fzf_git_modified() {
   local result
   result=$(git rev-parse --is-inside-work-tree >/dev/null 2>&1 && \
@@ -12,7 +19,11 @@ _fzf_git_modified() {
 zle -N _fzf_git_modified
 bindkey '^N' _fzf_git_modified
 
-# Kill process
+# =========================================================
+# Process management
+# =========================================================
+
+# Alt+P: select process to kill
 _fzf_kill_process() {
   local pid
   pid=$(ps -u "$USER" -o pid,comm -w --no-headers \

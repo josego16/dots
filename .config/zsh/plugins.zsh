@@ -1,4 +1,6 @@
-# ~/.config/zsh/plugins.zsh
+# =========================================================
+# Plugin manager
+# =========================================================
 
 ZPLUGINDIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
 
@@ -11,7 +13,7 @@ _zplugin_load() {
     git clone --depth=1 "https://github.com/${1}/${2}" "$plugin_path" \
       || { echo "ERROR: failed to install ${2}" >&2; return 1; }
   fi
-  source "${plugin_path}/${2}.plugin.zsh"
+  . "${plugin_path}/${2}.plugin.zsh"
 }
 
 # Pull latest for all installed plugins
@@ -23,13 +25,19 @@ zplugin-update() {
   done
 }
 
+# =========================================================
 # Plugins
+# =========================================================
+
 _zplugin_load Aloxaf fzf-tab
 _zplugin_load zsh-users zsh-autosuggestions
 _zplugin_load zsh-users zsh-history-substring-search
 _zplugin_load zdharma-continuum fast-syntax-highlighting
 
+# =========================================================
 # fzf-tab config
+# =========================================================
+
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
