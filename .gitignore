@@ -15,3 +15,7 @@ Thumbs.db
 # Local overrides (not tracked)
 .local/
 /.atl
+/plugins
+
+# Zsh plugins (installed locally, not tracked)
+.config/zsh/plugins

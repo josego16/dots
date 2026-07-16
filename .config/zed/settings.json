@@ -12,18 +12,6 @@
   // AGENT & AI
   // ─────────────────────────────────────────────────────────────
 
-  "proxy": "",
-  "edit_predictions": {
-    "ollama": {
-      "model": "qwen2.5-coder:7b-base"
-    }
-  },
-  "language_models": {
-    "opencode": {
-      "show_zen_models": false,
-    },
-  },
-
   "agent_servers": {
     "opencode": {
       "default_config_options": {
@@ -45,6 +33,7 @@
       "model": "go/deepseek-v4-flash",
       "enable_thinking": true,
     },
+
     "favorite_models": [
       {
         "provider": "opencode",
@@ -65,6 +54,12 @@
     ],
     "single_file_review": true,
     "play_sound_when_agent_done": "when_hidden",
+  },
+
+  "language_models": {
+    "opencode": {
+      "show_zen_models": false,
+    },
   },
 
   // ─────────────────────────────────────────────────────────────
@@ -478,37 +473,44 @@
   },
 
   "auto_install_extensions": {
-    "kanagawa-themes": true,
-    "charmed-icons": true,
     "html": true,
+    "git-firefly": true,
+    "toml": true,
+    "dockerfile": true,
+    "sql": true,
     "xml": true,
     "astro": true,
-    "git-firefly": true,
-    "sql": true,
+    "emmet": true,
+    "docker-compose": true,
+    "live-server": true,
+    "env": true,
+    "kanagawa-themes": true,
     "oxc": true,
     "golangci-lint": true,
-    "live-server": true,
-    "live-template": true,
-    "autocorrect": true,
+    "charmed-icons": true,
     "comment": true,
-    "emmet": true,
+    "autocorrect": true,
+    "live-template": true,
   },
   "auto_update_extensions": {
-    "kanagawa-themes": true,
-    "charmed-icons": true,
     "html": true,
+    "git-firefly": true,
+    "toml": true,
+    "dockerfile": true,
+    "sql": true,
     "xml": true,
     "astro": true,
-    "git-firefly": true,
-    "sql": true,
-    "biome": true,
+    "emmet": true,
+    "docker-compose": true,
+    "live-server": true,
+    "env": true,
+    "kanagawa-themes": true,
     "oxc": true,
     "golangci-lint": true,
-    "live-server": true,
-    "live-template": true,
-    "autocorrect": true,
+    "charmed-icons": true,
     "comment": true,
-    "emmet": true,
+    "autocorrect": true,
+    "live-template": true,
   },
 
   // ─────────────────────────────────────────────────────────────
