@@ -20,6 +20,16 @@ zle -N _fzf_git_modified
 bindkey '^N' _fzf_git_modified
 
 # =========================================================
+# Cursor navigation
+# =========================================================
+
+# Ctrl+Left: move backward one word
+bindkey '^[[1;5D' backward-word
+
+# Ctrl+Right: move forward one word
+bindkey '^[[1;5C' forward-word
+
+# =========================================================
 # Process management
 # =========================================================
 

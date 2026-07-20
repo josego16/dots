@@ -21,11 +21,25 @@ compdef eza=ls
 alias cat='bat'
 
 # =========================================================
+# Core utilities
+# =========================================================
+
+alias grep='rg --color=auto'
+alias diff='diff --color=auto'
+alias df='df -h'
+
+# Jump to previous directory
+alias -- -='cd -'
+
+# =========================================================
 # System
 # =========================================================
 
 # Reload shell
 alias rl='exec zsh'
+
+# Update alias
+alias upalias='nano .config/zsh/aliases.zsh'
 
 # =========================================================
 # Apt

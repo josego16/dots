@@ -28,6 +28,12 @@ setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
 export GPG_TTY=$(tty)
 
 # =========================================================
+# Tool configs
+# =========================================================
+
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/zsh/starship.toml"
+
+# =========================================================
 # Navigation
 # =========================================================
 
@@ -93,9 +99,17 @@ fi
 # =========================================================
 
 # fnm — auto-switch Node version, shell functions
-if [ -d "$HOME/.local/share/fnm" ]; then
+if [[ -d "$HOME/.local/share/fnm" ]]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
   eval "$(fnm env --shell zsh)"
 fi
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
 
 # =========================================================
 # Java
@@ -105,10 +119,19 @@ fi
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && . "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# pnpm
-export PNPM_HOME="/home/josedev/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
+# =========================================================
+# Toolchains
+# =========================================================
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+[[ -s "$BUN_INSTALL/_bun" ]] && export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Go
+export PATH="/usr/local/go/bin:$PATH"
+
+# =========================================================
+# Misc
+# =========================================================
+
+export PATH="/home/josedev/.mobiai/bin:$PATH"
